@@ -5,11 +5,11 @@ const getPrivateData = (req, res, next) => {
   });
 };
 
-const createPost = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    data: "This is private route where you can create a POST.",
-  });
-};
+// const createPost = (req, res, next) => {
+//   res.status(200).json({
+//     success: true,
+//     data: "This is private route where you can create a POST.",
+//   });
+// };
 
-export { getPrivateData, createPost };
+export { getPrivateData };

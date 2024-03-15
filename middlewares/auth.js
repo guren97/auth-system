@@ -10,13 +10,10 @@ export const protect = async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
-    // it will look like this
-    // Bearer sdfghs12354425q324v234v2
-    //   ""    [- it will get the second element which is the token]
   }
 
   if (!token) {
-    return next(new ErrorResponse("Not authorized to acces this route", 401));
+    return next(new ErrorResponse("Token not provided", 401));
   }
 
   try {
@@ -26,8 +23,13 @@ export const protect = async (req, res, next) => {
     if (!user) {
       return next(new ErrorResponse("User not found", 404));
     }
+
     req.user = user;
+    next();
   } catch (error) {
-    return next(new ErrorResponse("Not authorized to acces this route", 401));
+    if (error.name === "TokenExpiredError") {
+      return next(new ErrorResponse("Token expired", 401));
+    }
+    return next(new ErrorResponse("Invalid token", 401));
   }
 };
