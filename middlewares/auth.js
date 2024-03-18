@@ -24,12 +24,15 @@ export const protect = async (req, res, next) => {
       return next(new ErrorResponse("User not found", 404));
     }
 
+    // Attach the user object to the request
     req.user = user;
+    // Call next to pass control to the next middleware or route handler
     next();
   } catch (error) {
     if (error.name === "TokenExpiredError") {
       return next(new ErrorResponse("Token expired", 401));
     }
+    // Handle other JWT verification errors
     return next(new ErrorResponse("Invalid token", 401));
   }
 };

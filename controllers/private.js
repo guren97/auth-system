@@ -1,8 +1,11 @@
 const getPrivateData = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    data: "You have acccess to this route.",
-  });
+  res
+    .status(200)
+    .json({
+      success: true,
+      data: "You have acccess to this route.",
+    })
+    .send("You have access to this route");
 };
 
 // const createPost = (req, res, next) => {
