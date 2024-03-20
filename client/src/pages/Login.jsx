@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+// Reuse :: Custom UI Component
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
+import { Form } from "@/components/ui/Login_Signup_Forms";
 
 const Login = () => {
   return (
     <div className="min-h-screen flex justify-center items-center">
-      <form className="w-full sm:w-11/12 max-w-md border rounded-md p-8">
+      <Form>
         <div id="title" className="grid gap-4 place-items-center">
           <h1 className="text-gray-800 font-medium text-lg text-center">
             Login to your account
@@ -11,21 +15,12 @@ const Login = () => {
 
           <p className="text-gray-800 font-normal text-sm text-center">
             Don't have an account yet?{" "}
-            <Link to="/signup" className="text-blue-800 text-sm font-medium">
+            <Link to="/signup" className="text-indigo-600 text-sm font-medium">
               Sign up
             </Link>
           </p>
-
-          <input
-            className="p-2 w-full border rounded"
-            type="text"
-            placeholder="Email"
-          />
-          <input
-            className="p-2 w-full border rounded mt-2"
-            type="password"
-            placeholder="Password"
-          />
+          <Input type="text" placeholder="Email" />
+          <Input type="password" placeholder="Password" />
           <div className="flex justify-between items-center mt-2 gap-20">
             <label htmlFor="remember" className="flex items-center">
               <input
@@ -40,19 +35,14 @@ const Login = () => {
             </label>
             <Link
               to="/forgotpassword"
-              className="text-blue-800 font-medium text-sm"
+              className="text-indigo-600 font-medium text-sm"
             >
               Forgot Password?
             </Link>
           </div>
-          <button
-            className="border rounded w-full mt-4 p-2 bg-slate-900 hover:bg-slate-800 text-white"
-            type="submit"
-          >
-            Login
-          </button>
+          <Button>Login</Button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 };

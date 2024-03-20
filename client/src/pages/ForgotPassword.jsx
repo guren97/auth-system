@@ -15,7 +15,7 @@ const ForgotPassword = () => {
 
             <span className="text-gray-800 font-normal text-sm">
               <Link className="text-blue-800 text-sm font-medium" to="/login">
-                Back to Login
+                Back to login
               </Link>
             </span>
           </label>

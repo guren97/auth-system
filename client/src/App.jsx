@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import ForgotPassword from "./components/forgotPassword";
+import ForgotPassword from "./pages/ForgotPassword";
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,7 +21,7 @@ const App = () => {
     )
   );
   return (
-    <div>
+    <div className="bg-slate-50">
       <RouterProvider router={router} />
     </div>
   );
