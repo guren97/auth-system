@@ -29,13 +29,13 @@ const Login = () => {
                 name="remember"
                 className="mr-1"
               />
-              <span className="text-gray-800 font-normal text-xsms">
+              <span className="text-gray-800 font-normal text-xs">
                 Remember Me
               </span>
             </label>
             <Link
               to="/forgotpassword"
-              className="text-indigo-600 font-medium text-sm"
+              className="text-indigo-600 font-medium text-xs"
             >
               Forgot Password?
             </Link>
