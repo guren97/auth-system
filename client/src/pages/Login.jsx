@@ -29,7 +29,7 @@ const Login = () => {
                 name="remember"
                 className="mr-1"
               />
-              <span className="text-gray-800 font-normal text-sm">
+              <span className="text-gray-800 font-normal text-xsms">
                 Remember Me
               </span>
             </label>
