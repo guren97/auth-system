@@ -2,6 +2,7 @@
 import dotenv from "dotenv";
 import cors from "cors";
 import express from "express";
+import cookieParser from "cookie-parser";
 import router from "./routes/auth.js";
 import privateRouter from "./routes/private.js";
 import connectDb from "./config/db.js";
@@ -16,6 +17,7 @@ const app = express();
 //::use middlewares
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 //::import the routers
 app.use("/api/auth", router);

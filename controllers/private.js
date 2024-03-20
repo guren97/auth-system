@@ -1,3 +1,7 @@
+import User from "../models/UserSchema.js";
+import generateToken from "../utils/generateToken.js";
+import ErrorResponse from "../utils/errorResponse.js";
+
 const getPrivateData = (req, res, next) => {
   res
     .status(200)
@@ -8,11 +12,19 @@ const getPrivateData = (req, res, next) => {
     .send("You have access to this route");
 };
 
-// const createPost = (req, res, next) => {
-//   res.status(200).json({
-//     success: true,
-//     data: "This is private route where you can create a POST.",
-//   });
-// };
+const profiles = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    if (!users) {
+      return next(new ErrorResponse("No users found in the database", 404));
+    }
+    res.status(200).json({
+      success: true,
+      users,
+    });
+  } catch (error) {
+    next(new ErrorResponse("Internal Server Error", 500));
+  }
+};
 
-export { getPrivateData };
+export { getPrivateData, profiles };

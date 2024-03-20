@@ -34,6 +34,25 @@ export const register = async (req, res, next) => {
 };
 
 //-------------------------------------------------------------------------------//
+//                          ::      USERS     ::                                 //
+//-------------------------------------------------------------------------------//
+
+// export const users = async (req, res, next) => {
+//   try {
+//     const users = await User.find();
+//     if (!users) {
+//       return next(new ErrorResponse("No users found in the database", 404));
+//     }
+//     res.status(200).json({
+//       success: true,
+//       users,
+//     });
+//   } catch (error) {
+//     next(new ErrorResponse("Internal Server Error", 500));
+//   }
+// };
+
+//-------------------------------------------------------------------------------//
 //                          :: LOGIN FUNCTION ::                                 //
 //-------------------------------------------------------------------------------//
 export const login = async (req, res, next) => {
@@ -61,4 +80,15 @@ export const login = async (req, res, next) => {
   } catch (error) {
     return next(new ErrorResponse("Internal Server Error", 500));
   }
+};
+
+//-------------------------------------------------------------------------------//
+//                          :: LOGIN FUNCTION ::                                 //
+//-------------------------------------------------------------------------------//
+export const logout = async (req, res, next) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({ message: "User logged out" });
 };
