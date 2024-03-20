@@ -1,4 +1,5 @@
 import User from "../models/UserSchema.js";
+import generateToken from "../utils/generateToken.js";
 import ErrorResponse from "../utils/errorResponse.js";
 
 //-------------------------------------------------------------------------------//
@@ -17,7 +18,7 @@ export const register = async (req, res, next) => {
       const user = await User.create({ username, user_role, email, password });
 
       // Send token in response
-      sendToken(user, 201, res);
+      generateToken(user, 201, res);
     } else {
       // If existing user found, return error response
       const message =
@@ -56,13 +57,8 @@ export const login = async (req, res, next) => {
     }
 
     // Corrected order of parameters: user, res, statusCode
-    sendToken(user, 200, res);
+    generateToken(user, 200, res);
   } catch (error) {
     return next(new ErrorResponse("Internal Server Error", 500));
   }
-};
-
-export const sendToken = (user, statusCode, res) => {
-  const token = user.getSignedToken();
-  res.status(statusCode).json({ succes: true, token });
 };

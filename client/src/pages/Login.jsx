@@ -12,7 +12,6 @@ const Login = () => {
           <h1 className="text-gray-800 font-medium text-lg text-center">
             Login to your account
           </h1>
-
           <p className="text-gray-800 font-normal text-sm text-center">
             Don't have an account yet?{" "}
             <Link to="/signup" className="text-indigo-600 text-sm font-medium">
