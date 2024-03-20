@@ -26,7 +26,7 @@ app.use(errorHandler);
 
 //::create Start Server Function
 const startServer = async () => {
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 5000;
   try {
     await connectDb();
     await app.listen(PORT, () => {
