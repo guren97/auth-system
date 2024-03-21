@@ -12,7 +12,7 @@ const getPrivateData = (req, res, next) => {
     .send("You have access to this route");
 };
 
-const profiles = async (req, res, next) => {
+const getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
     if (!users) {
@@ -27,4 +27,4 @@ const profiles = async (req, res, next) => {
   }
 };
 
-export { getPrivateData, profiles };
+export { getPrivateData, getUsers };
